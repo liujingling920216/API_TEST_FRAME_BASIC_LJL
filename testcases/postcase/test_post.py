@@ -56,5 +56,5 @@ class TestPost(unittest.TestCase):
                        content = "ljl0709发帖"+time.strftime('%Y-%m-%d-%H-%M-%S'),
                        token = self.token)
         post_rep04 = post_req04.content.decode('utf-8')
-        print(post_rep04)
+        # print(post_rep04)
         self.assertEqual(post_req04.json()['state'], "fail")

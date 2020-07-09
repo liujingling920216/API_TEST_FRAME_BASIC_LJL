@@ -18,15 +18,15 @@ class TestLogin(unittest.TestCase):
         logger.info("执行登录模块第一个案例：正常用户名密码登录")
         req1 = login(self.session,"sophia.liu","123456",self.token)
         rep01 = req1.content.decode("utf-8")
-        print(rep01)
+        # print(rep01)
         self.assertEqual(req1.json()['state'],"success")
 
-    def test_login_fail_wrong_u_02(self):
+    def test_login_fail_wrong_usr_02(self):
         logger.info("执行登录模块第二个案例：错误的用户名登录")
         req2 = login(self.session,"sophia","123456",self.token)
         self.assertEqual(req2.json()['state'],"fail")
 
-    def test_login_fail_wrong_p_03(self):
+    def test_login_fail_wrong_pw_03(self):
         logger.info("执行登录模块第三个案例：错误的密码登录")
         req3 = login(self.session, "sophia.liu", "12345",self.token)
         self.assertEqual(req3.json()['state'],"fail")
