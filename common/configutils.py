@@ -35,6 +35,16 @@ class ConfigUtils:
         url = self.conf.get('default','URL')
         return url
 
+    @property
+    def REGISTER_NAME(self):
+        register_name = self.conf.get('register','REGISTER_NAME')
+        return register_name
+
+    @property
+    def REGISTER_EMAIL(self):
+        register_email = self.conf.get('register','REGISTER_EMAIL')
+        return register_email
+
 config_utils = ConfigUtils()
 
 if __name__ == '__main__':
@@ -42,3 +52,4 @@ if __name__ == '__main__':
     print(config_utils.LOG_PATH)
     print(config_utils.LOG_LEVER)
     print(config_utils.URL)
+    print(config_utils.REGISTER_EMAIL)

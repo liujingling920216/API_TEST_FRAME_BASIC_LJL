@@ -3,6 +3,7 @@ from collections import OrderedDict
 
 from common.configutils import config_utils
 
+# 登录
 def get_main_page_token(session):
     url01 = config_utils.URL + '/phpwind/'
     res01 = session.get(url=url01)
@@ -56,8 +57,8 @@ def login_auth(session):
     res04 = session.get(url=config_utils.URL + '/phpwind/index.php',
                         params=get_params
                         )
-
-def post(session,title,content,token):
+# 发帖
+def post_info(session,title,content,token):
     # token = get_main_page_token(session)
     get_params = {
         "c": "post",
@@ -90,3 +91,31 @@ def post(session,title,content,token):
                       files = mul_form_data
                       )
     return res05
+
+# 注册
+def register_auth(session):
+    get_params = {
+        "m":"u",
+        "c":"register"
+    }
+    res06 = session.get(url = config_utils.URL+'/phpwind/index.php',params = get_params)
+    rep06 = res06.content.decode('utf-8')
+    token01 = re.findall("TOKEN : '(.+?)',	//token ",rep06)[0]
+    return token01
+
+def resister(session,username,password,repassword,email,csrf_token):
+    get_param = {
+        "m": "u",
+        "c": "register",
+        "a": "dorun"
+    }
+    post_data = {
+        "username": username,
+        "password": password,
+        "repassword": repassword,
+        "email": email,
+        "csrf_token": csrf_token
+    }
+    res07 = session.post(url = config_utils.URL+'/phpwind/index.php',params = get_param,data = post_data)
+    # rep07 = res07.content.decode('utf-8')
+    return res07

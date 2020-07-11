@@ -18,7 +18,7 @@ class TestPost(unittest.TestCase):
     def test_post_sucess_01(self):
         logger.info("执行发帖模块第一个案例：登录授权后进行发贴")
         login_auth(self.session)
-        post_req01= post(self.session,
+        post_req01= post_info(self.session,
                        title = "ljl0709发帖"+ time.strftime('%Y-%m-%d-%H-%M-%S'),
                        content = "ljl0709发帖"+time.strftime('%Y-%m-%d-%H-%M-%S'),
                        token = self.token)
@@ -29,7 +29,7 @@ class TestPost(unittest.TestCase):
     def test_post_no_auth_fail_02(self):
         logger.info("执行发帖模块第二个案例：登录后不进行授权进行发贴")
         # login_auth(self.session)
-        post_req02= post(self.session,
+        post_req02= post_info(self.session,
                        title = "ljl0709发帖"+ time.strftime('%Y-%m-%d-%H-%M-%S'),
                        content = "ljl0709发帖"+time.strftime('%Y-%m-%d-%H-%M-%S'),
                        token = self.token)
@@ -40,7 +40,7 @@ class TestPost(unittest.TestCase):
     def test_post_wrong_token_fail_03(self):
         logger.info("执行发帖模块第三个案例：发贴接口上送错误的token")
         # login_auth(self.session)
-        post_req03= post(self.session,
+        post_req03= post_info(self.session,
                        title = "ljl0709发帖"+ time.strftime('%Y-%m-%d-%H-%M-%S'),
                        content = "ljl0709发帖"+time.strftime('%Y-%m-%d-%H-%M-%S'),
                        token = "111111")
@@ -51,7 +51,7 @@ class TestPost(unittest.TestCase):
     def test_post_title_null_fail_04(self):
         logger.info("执行发帖模块第四个案例：发贴接口标题送None")
         # login_auth(self.session)
-        post_req04= post(self.session,
+        post_req04= post_info(self.session,
                        title = None,
                        content = "ljl0709发帖"+time.strftime('%Y-%m-%d-%H-%M-%S'),
                        token = self.token)
