@@ -7,9 +7,9 @@ from common.configutils import config_utils
 # 获取所有的测试案例
 def get_all_testcases_suite():
     discover = unittest.defaultTestLoader.discover(
-        start_dir='.\\testcases',
+        start_dir='.//testcases',
         pattern='test*.py',
-        top_level_dir='.\\testcases'
+        top_level_dir='.//testcases'
     )
     testsuite = unittest.TestSuite()
     testsuite.addTests(discover)
