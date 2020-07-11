@@ -7,6 +7,7 @@ from common.logutils import logger
 from common.common_api import *
 
 class TestPost(unittest.TestCase):
+    """发帖模块测试用例"""
     def setUp(self) -> None:
         self.session = requests.session()
         self.token = get_main_page_token(self.session)
