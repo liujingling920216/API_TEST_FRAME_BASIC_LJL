@@ -16,6 +16,7 @@ class TestPost(unittest.TestCase):
         pass
 
     def test_post_sucess_01(self):
+        """执行发帖模块第一个案例：登录授权后进行发贴"""
         logger.info("执行发帖模块第一个案例：登录授权后进行发贴")
         login_auth(self.session)
         post_req01= post_info(self.session,
@@ -27,6 +28,7 @@ class TestPost(unittest.TestCase):
         self.assertEqual(post_req01.json()['state'], "success")
 
     def test_post_no_auth_fail_02(self):
+        """执行发帖模块第二个案例：登录后不进行授权进行发贴"""
         logger.info("执行发帖模块第二个案例：登录后不进行授权进行发贴")
         # login_auth(self.session)
         post_req02= post_info(self.session,
@@ -38,6 +40,7 @@ class TestPost(unittest.TestCase):
         self.assertEqual(post_req02.json()['state'], "fail")
 
     def test_post_wrong_token_fail_03(self):
+        """执行发帖模块第三个案例：发贴接口上送错误的token"""
         logger.info("执行发帖模块第三个案例：发贴接口上送错误的token")
         # login_auth(self.session)
         post_req03= post_info(self.session,
@@ -49,6 +52,7 @@ class TestPost(unittest.TestCase):
         self.assertEqual(post_req03.json()['state'], "fail")
 
     def test_post_title_null_fail_04(self):
+        """执行发帖模块第四个案例：发贴接口标题送None"""
         logger.info("执行发帖模块第四个案例：发贴接口标题送None")
         # login_auth(self.session)
         post_req04= post_info(self.session,
